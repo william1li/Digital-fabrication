@@ -27,8 +27,8 @@ a {
 }
 
 nav {
-  background-color: #0b4a7d;
-  color: #FFFFFF;
+  background-color: #62AEED;
+  color: #62AEED;
   padding: 50px 0px;
 }
 
@@ -36,6 +36,7 @@ nav {
   display: flex;
   justify-content: flex-start;
   gap: 10px;
+  color: #FFFFFF;
 }
 
 .nav-title{
@@ -47,7 +48,7 @@ nav {
 }
 
 .nav-link {
-  border: 3px outset #0b4a7d;
+  border: 3px outset #FFFFFF;
   border-radius: 30px;
   padding: 20px 30px;
   background-color: #0b4a7d;
@@ -59,7 +60,7 @@ nav {
   border: 3px outset #FFFFFF;
   border-radius: 20px;
   padding: 10px 30px;
-  background-color: #FFFFFF;
+  background-color: #0b4a7d;
   transition: 0.3s;
   color: white !important;
 }
