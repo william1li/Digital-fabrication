@@ -31,15 +31,32 @@
   <h4>Continuation of kinetic project -- making the teacups spin at different speeds and directions</h2>
 
 <p class="margin">   </p>
-<h2><b><u><i>Coding:</h2></u></b></i>
+<h2><b><u><i>CODING:</h2></u></b></i>
 <h4> Originally, I was planning on combining these two projects together anyway, but I ran out of time on day 3 to add the arduino component. I thought this would be a great addition to the "carnival" ride idea since most rides can adjust speeds to slowly become faster/slower. I also thought changing directions would make the concept cooler - and can help me in my final project.
 
-<b> Here's the code snippets: <a href='/Users/williamli/Documents/Arduino' download > Download here! <a/></b>
+<b> Here's the final code: <a/></b>
   <p class="margin">   </p>
 
-
-<h4> An important aspect of my project was the functionality of turning gears different ways, as seen in this snippet: <h4>  
 <pre><code class="language-arduino">
+void loop() {
+  int potPin = 33; // potentiometer pin
+
+const int A1A = 0; // measures speed
+const int A1B = 4; // measures direction
+const int freq = 5000; 
+const int resolution = 8;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(potPin, INPUT); // sets potentiometer as input so analog values can be read
+  pinMode(A1A, OUTPUT); // sets motor speed as output
+  pinMode(A1B, OUTPUT); // sets motor direction as output
+  ledcAttach(A1A, freq, resolution); //PWM configuration
+  ledcAttach(A1B, freq, resolution);
+  ledcWrite(A1A, 0); // Sets both motors to be off
+  ledcWrite(A1B, 0);
+}
+
 void loop() {
   int potVal = analogRead(potPin); // reads voltage from potentiometer (0 to 4095)
   Serial.println(potVal); //prints out values so I can monitor if its working
@@ -63,6 +80,10 @@ void loop() {
     ledcWrite(A1B, 0);
   }
 
+  delay(10);
+
+}
+
 </code></pre> 
 
 <h4> First, I adjusted the speed of the gear using a potentiometer and mapping out the analog and digital aspects. I got help from jessica, and after completing the code for just adjusting the speed, I found it on the website -- so i double-checked.  <p class="margin">   </p> <img src="text.jpg" alt="Flowers in Chania" width = 400; 
@@ -79,7 +100,7 @@ void loop() {
   <p class="margin">   </p>
 
 <h6><i></p> turns one way at one end of potentiometer, turns the other at the other end</h6></i></p>
-<h2><b><u><i>Circutry:</h2></u></b></i>
+<h2><b><u><i>CIRCUTRY:</h2></u></b></i>
 
 <h4> The wires were extremely confusing for this. I had to first hook up the potentiometer and after following the tutorial for the LED, i decided to try with the gear. After many tries and hooking up the 5V to the bus, I got it to work. 
    <p class="margin">   </p>
