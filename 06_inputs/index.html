@@ -76,11 +76,47 @@ void loop() {
     
  </pre></code>
 
-  </div>
-  
-<h4>Assignment 2: [Use + Calibrate Another Sensor]</h4>
 
-</div>
+  
+<h2><b><u><i>Assignment 2: Capacitive sensor</h2></u></b></i>
+
+<h4> Due to timing issues, I made this sensor a little simpler. It's a touch pad, so everytime I touch the copper piece, the gear will run. So for as long as my finger is on the sensor, cards will continously fly out. I may consider using this feature for my shuffling in my final project. It also varies based on how much pressure you apply on the pad. <h4>
+   <p class="margin">   </p>
+<img src="copper.jpg" alt="Flowers in Chania"  width = 200; 
+  </div>
+
+<h4> For the code, I used a T pin to read the values from the pin when I touched the values. The max was 53 while the minimum was 0. Then, I used some motor logic and a delay function to run the motor. <h4>
+  <p class="margin">   </p>
+<pre><code class="language-arduino">// 
+// Using T5 (GPIO 12)
+#define TOUCH_PIN T5
+const int A1A = 2;
+const int A1B = 4;
+
+void setup() {
+  Serial.begin(115200);
+  delay(1000);  // Wait a second for Serial to start
+  pinMode(A1A, OUTPUT);     // specify these pins as outputs
+  pinMode(A1B, OUTPUT);
+  digitalWrite(A1A, LOW);   // start with the motors off 
+  digitalWrite(A1B, LOW);
+}
+
+void loop() {
+  int touchValue = touchRead(TOUCH_PIN);
+  Serial.println(touchValue);
+  delay(100);
+  if (touchValue < 30){
+    digitalWrite (A1A, HIGH);
+    digitalWrite (A1B, HIGH);
+  }
+  else{
+      digitalWrite (A1A, LOW);
+    digitalWrite (A1B, LOW);
+  }
+}
+</code></pre>
+
 </xmp>
 </body>
 
